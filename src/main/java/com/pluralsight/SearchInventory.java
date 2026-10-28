@@ -16,27 +16,18 @@ public class SearchInventory {
             System.out.println(product);
 
         }
-        inventoryFile();
+
     }
 
     public static ArrayList<Product> getInventory() {
         ArrayList<Product> inventory = new ArrayList<>();
 
-        inventory.add(new Product(1,"book",2.99));
-        inventory.add(new Product(2,"potato",1.99));
-        inventory.add(new Product(3,"milk",4.99));
-        inventory.add(new Product(4,"laptop",999.99));
-        inventory.add(new Product(6,"smart tv",450.99));
-        // Write your code here
-
-        return inventory;
-    }
-    public static void inventoryFile (){
         try {
             BufferedReader bufferedReader =new BufferedReader(new FileReader("inventory.csv"));
             String list;
             while ((list = bufferedReader.readLine())!= null){
-                System.out.println(list);
+                String[] tokens = list.split("\\|");
+                inventory.add(new Product(Integer.parseInt(tokens[0]),tokens[1],Double.parseDouble(tokens[2])));
             }
 
 
@@ -44,5 +35,15 @@ public class SearchInventory {
             System.out.println("Something is wrong :( ");
         }
 
+        /*inventory.add(new Product(1,"book",2.99));
+        inventory.add(new Product(2,"potato",1.99));
+        inventory.add(new Product(3,"milk",4.99));
+        inventory.add(new Product(4,"laptop",999.99));
+        inventory.add(new Product(6,"smart tv",450.99));
+        System.out.println();*/
+        // Write your code here
+
+        return inventory;
     }
+
 }
