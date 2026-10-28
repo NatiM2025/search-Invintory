@@ -16,7 +16,7 @@ public class SearchInventory {
             System.out.println(product);
 
         }
-
+        inventoryFile();
     }
 
     public static ArrayList<Product> getInventory() {
@@ -31,5 +31,18 @@ public class SearchInventory {
 
         return inventory;
     }
+    public static void inventoryFile (){
+        try {
+            BufferedReader bufferedReader =new BufferedReader(new FileReader("inventory.csv"));
+            String list;
+            while ((list = bufferedReader.readLine())!= null){
+                System.out.println(list);
+            }
 
+
+        } catch (Exception e) {
+            System.out.println("Something is wrong :( ");
+        }
+
+    }
 }
